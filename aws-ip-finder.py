@@ -23,7 +23,7 @@ class IpFinder:
             for instance in reservation["Instances"]:
                 if 'PublicIpAddress' in instance:
                     finder_info.append(
-                        { 'service': "ec2", 'public_ip': instance["PublicIpAddress"], 'resource_id': instance["InstanceId"] }
+                        { 'service': "ec2", 'public_ip': instance["PublicIpAddress"], 'resource_id': instance["InstanceId"], 'EbsOptimized': instance["EbsOptimized"], 'Hypervisor': instance["Hypervisor"], 'InstanceType': instance["InstanceType"] }
                     )
 
     # NAT Gateway
@@ -79,7 +79,7 @@ def _print_output(dic):
         s = ""
         s += "service_name,public_ip,resource_id\n"
         for x in dic:
-            s += x["service"] + "," + x["public_ip"] + "," + x["resource_id"] + "\n"
+            s += x["service"] + "," + x["public_ip"] + "," + x["resource_id"] + "," + str(x["EbsOptimized"]) + "," + x["Hypervisor"] + "," + x["InstanceType"] + "\n"
         print(s)
     else:
         for x in dic:

@@ -1,2 +1,3 @@
 *.ignore
-my-config.yml
+config.yml
+__pycache__/
